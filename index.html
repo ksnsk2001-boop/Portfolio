@@ -1,52 +1,400 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Portfolio</title>
-		<link rel="stylesheet" href="app.css" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Developer Portfolio</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<header>
-			<div class="menu">
-				<a class="menuItem" href="index.html">
-					<img class="logo" src="profile.png" alt="Profile" />
-					<label class="menuLabel active">Nakul Sri Kuber K S</label>
-				</a>
-				<a href="index.html" class="menuItem active">Home</a>
-				<a href="service.html" class="menuItem inactive">Services</a>
-				<a href="about.html" class="menuItem inactive">About Me</a>
-				<a href="contact.html" class="menuItem inactive">Contact</a>
-			</div>
+			<nav class="navbar navbar-expand-lg sticky-top navbar-light" id="navbar">
+				<div class="container position-relative">
+					<a class="navbar-brand fw-bold" href="#home"> Nakul Sri Kuber K S </a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navLinks"
+						aria-controls="navLinks"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse justify-content-center"
+						id="navLinks"
+					>
+						<ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="#home">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#services">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#skills">Skills</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#projects">Projects</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#contact">Contact</a>
+							</li>
+						</ul>
+						<button
+							class="btn btn-outline-warning ms-lg-3 theme-toggle"
+							id="themeToggle"
+						>
+							Light / Dark
+						</button>
+					</div>
+				</div>
+			</nav>
 		</header>
-		<div>
-			<div class="content">
-				<div class="halfPage center-left">
-					<div class="intro">
-						<p class="fade">Hi Iam</p>
-						<p class="name">Nakul Sri Kuber</p>
-						<p class="role active">UI/UX Designer </p>
-						<div class="action"><button class="activeButton">Hire me</button> <button class="inactiveButton">Download</button></div>
-						<div class="card">
-							<div class="data">
-								<label class="active">5+</label>
-								<p>Experiences</p>
+
+		<main>
+			<section id="home" class="hero section">
+				<div class="container">
+					<div class="row align-items-center gy-4">
+						<div class="col-lg-6">
+							<p class="eyebrow text-orange">Full Stack Web Developer</p>
+							<h1 class="display-4 fw-bold">
+								Building intuitive products with Laravel, Vue, and modern
+								tooling.
+							</h1>
+							<p class="lead text-muted">
+								I'm a software engineer crafting reliable backends, expressive
+								UIs, and deployment automation for teams that move fast.
+							</p>
+							<div class="d-flex flex-wrap gap-2 mt-3">
+								<a class="btn btn-warning" href="#contact">Contact</a>
+								<a
+									class="btn btn-outline-warning"
+									href="resume.pdf"
+									target="_blank"
+									rel="noreferrer"
+									>Resume</a
+								>
+								<a class="btn btn-outline-warning" href="#projects"
+									>View Projects</a
+								>
 							</div>
-							<div class="data">
-								<label class="active">20+</label>
-								<p>Project</p>
-							</div>
-							<div class="data">
-								<label class="active">80+</label>
-								<p>Happy clients</p>
+						</div>
+						<div class="col-lg-6 text-center">
+							<div class="hero-card p-4">
+								<img
+									src="person.png"
+									alt="Developer portrait"
+									class="img-fluid"
+								/>
+								<p class="mt-3 text-muted">
+									Cloud infrastructure keeps apps reliable, scalable, and secure
+									from day one.
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="halfPage center">
-					<img class="person" src="person.png" alt="Person" />
+			</section>
+
+			<section id="about" class="section bg-light-theme">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8">
+							<h2>About</h2>
+							<p>
+								Experienced developer focusing on Laravel API platforms and
+								Vue-based frontends. I own the full stack from database schema
+								design, to artisan task automation, to Vue component libraries
+								and responsive layouts.
+							</p>
+							<p>
+								Comfortable shipping SaaS features, integrating REST APIs, and
+								ensuring stable deployments on both Linux and cloud platforms.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="services" class="section bg-light-theme">
+				<div class="container">
+					<div class="section-head">
+						<h2>Services</h2>
+						<p class="text-muted">
+							Teaching, mentoring, and freelance delivery.
+						</p>
+					</div>
+					<div class="row g-4">
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body">
+									<p class="tag">Teaching</p>
+									<h5 class="card-title">Laravel + Vue Coaching</h5>
+									<p class="card-text text-muted">
+										Guided sessions for full stack fundamentals, API design, and
+										frontend architecture.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body">
+									<p class="tag">API Integration</p>
+									<h5 class="card-title">Third-party API Integration</h5>
+									<p class="card-text text-muted">
+										Payments, email, maps, auth, and analytics integrations with
+										reliable error handling.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body">
+									<p class="tag">Debugging</p>
+									<h5 class="card-title">Laravel Application Debugging</h5>
+									<p class="card-text text-muted">
+										Fixing errors, improving performance, and stabilizing
+										production deployments.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body">
+									<p class="tag">Freelance</p>
+									<h5 class="card-title">General Freelance Services</h5>
+									<p class="card-text text-muted">
+										Feature builds, UI cleanups, database work, and deployment
+										support on demand.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="skills" class="section">
+				<div class="container">
+					<div class="section-head">
+						<h2>Skills</h2>
+						<p class="text-muted">Tools and platforms I use daily.</p>
+					</div>
+					<div class="row g-3 mt-3">
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">Laravel</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">PHP</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">Vue.js</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">JavaScript</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">MySQL</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">REST API</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">Linux</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">Git</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">GCP</span>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<span class="badge bg-dark px-3 py-2 w-100">AWS</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="projects" class="section bg-light-theme">
+				<div class="container">
+					<div class="section-head">
+						<h2>Projects</h2>
+					</div>
+					<div class="row g-4">
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body d-flex flex-column">
+									<p class="tag">RBAC Task Manager</p>
+									<h5 class="card-title">
+										Role based access control task management
+									</h5>
+									<p class="card-text text-muted">
+										Task tracker with granular permissions built on Laravel
+										policies.
+									</p>
+									<div class="mt-auto">
+										<p class="mb-1 small">Tech: Laravel · Blade · MySQL</p>
+										<a class="btn btn-sm btn-outline-warning" href="#"
+											>GitHub</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body d-flex flex-column">
+									<p class="tag">EPUB Reader Dashboard</p>
+									<h5 class="card-title">
+										Web application to upload & read EPUB files
+									</h5>
+									<p class="card-text text-muted">
+										Custom reader UI with Laravel backend storage and real-time
+										progress tracking.
+									</p>
+									<div class="mt-auto">
+										<p class="mb-1 small">Tech: Laravel · Vue · WebSockets</p>
+										<a class="btn btn-sm btn-outline-warning" href="#"
+											>GitHub</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card project-card h-100">
+								<div class="card-body d-flex flex-column">
+									<p class="tag">FlowHaven</p>
+									<h5 class="card-title">Decoupled SaaS architecture</h5>
+									<p class="card-text text-muted">
+										Laravel API backend powering Vue + Pinia frontend with role
+										segments and cloud deployment.
+									</p>
+									<div class="mt-auto">
+										<p class="mb-1 small">
+											Tech: Laravel · Vue · Pinia · Docker
+										</p>
+										<a class="btn btn-sm btn-outline-warning" href="#"
+											>GitHub</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="section">
+				<div class="container">
+					<div class="row g-4">
+						<div class="col-md-6">
+							<h2>Contact</h2>
+							<p class="text-muted">
+								Email, GitHub, LinkedIn — happy to discuss freelance or
+								full-time roles.
+							</p>
+							<ul class="list-unstyled">
+								<li>
+									Email:
+									<a class="text-orange" href="mailto:ksnsk2001@gmail.com"
+										>ksnsk2001@gmail.com</a
+									>
+								</li>
+								<li>
+									GitHub:
+									<a
+										class="text-orange"
+										href="https://github.com/ksnsk-nakul"
+										target="_blank"
+										rel="noreferrer"
+										>github.com/ksnsk-nakul</a
+									>
+								</li>
+								<li>
+									LinkedIn:
+									<a
+										class="text-orange"
+										href="https://www.linkedin.com/in/nakul-sri-kuber-384233193/"
+										target="_blank"
+										rel="noreferrer"
+										>linkedin.com/in/nakul-sri-kuber-384233193/</a
+									>
+								</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<form class="row g-3">
+								<div class="col-12">
+									<label class="form-label">Name</label>
+									<input
+										type="text"
+										class="form-control"
+										placeholder="Your name"
+									/>
+								</div>
+								<div class="col-12">
+									<label class="form-label">Email</label>
+									<input
+										type="email"
+										class="form-control"
+										placeholder="you@example.com"
+									/>
+								</div>
+								<div class="col-12">
+									<label class="form-label">Message</label>
+									<textarea
+										class="form-control"
+										rows="3"
+										placeholder="Tell me about your project"
+									></textarea>
+								</div>
+								<div class="col-12">
+									<button type="submit" class="btn btn-warning">
+										Send message
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer bg-dark text-white text-center py-3">
+			<div class="container">
+				<p class="mb-1">© 2026 Nakul Sri Kuber K S</p>
+				<div class="d-flex justify-content-center gap-3">
+					<a class="text-white" href="https://github.com/ksnsk-nakul/"
+						>GitHub</a
+					>
+					<a
+						class="text-white"
+						href="https://www.linkedin.com/in/nakul-sri-kuber-384233193/"
+						>LinkedIn</a
+					>
 				</div>
 			</div>
-		<footer>Footer</footer>
+		</footer>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="script.js"></script>
 	</body>
 </html>
