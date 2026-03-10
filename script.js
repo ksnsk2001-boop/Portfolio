@@ -66,3 +66,65 @@ themeToggle.addEventListener("click", () => {
   const nextTheme = body.classList.contains("theme-dark") ? "light" : "dark";
   setTheme(nextTheme);
 });
+
+// Scroll-based active nav highlight
+const sectionIds = ["home", "about", "skills", "projects", "experience", "contact"];
+const sections = sectionIds
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
+const navLinks = document.querySelectorAll(".navbar .nav-link");
+
+const updateActiveNav = () => {
+  const offset = 120;
+  let activeId = sections[0]?.id || "";
+
+  sections.forEach((section) => {
+    const top = section.offsetTop - offset;
+    if (window.scrollY >= top) {
+      activeId = section.id;
+    }
+  });
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    link.classList.toggle("active", href === `#${activeId}`);
+  });
+};
+
+window.addEventListener("scroll", updateActiveNav);
+window.addEventListener("load", updateActiveNav);
+
+// Project modal population
+const projectButtons = document.querySelectorAll(".project-modal-btn");
+const modalTitle = document.getElementById("projectModalLabel");
+const modalDesc = document.getElementById("projectModalDesc");
+const modalTech = document.getElementById("projectModalTech");
+const modalGitHub = document.getElementById("projectModalGitHub");
+
+projectButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const title = btn.getAttribute("data-title") || "Project Details";
+    const desc = btn.getAttribute("data-desc") || "";
+    const tech = btn.getAttribute("data-tech") || "";
+    const github = btn.getAttribute("data-github") || "#";
+
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modalTech.textContent = `Tech: ${tech}`;
+    modalGitHub.setAttribute("href", github);
+  });
+});
+
+// Show "View Details" only when excerpt overflows
+const updateProjectButtons = () => {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    const excerpt = card.querySelector(".project-excerpt");
+    const button = card.querySelector(".project-modal-btn");
+    if (!excerpt || !button) return;
+    const hasOverflow = excerpt.scrollHeight > excerpt.clientHeight;
+    button.style.display = hasOverflow ? "inline-flex" : "none";
+  });
+};
+
+window.addEventListener("load", updateProjectButtons);
+window.addEventListener("resize", updateProjectButtons);
