@@ -1,76 +1,68 @@
-const toggle = document.getElementById("themeToggle");
-const root = document.documentElement;
-const body = document.body;
-const navbar = document.getElementById("navbar");
-const navLinks = document.querySelectorAll(".navbar .nav-link");
-const sections = [...document.querySelectorAll("section[id]")];
-const saved = localStorage.getItem("portfolio-theme");
+// Initialize AOS animations
+AOS.init({
+  duration: 800,
+  once: true,
+});
 
-const applyTheme = (isDark) => {
-  if (isDark) {
-    body.classList.add("dark-theme");
-    navbar.classList.add("navbar-dark");
-    navbar.classList.remove("navbar-light");
-    toggle.classList.add("btn-warning");
-    toggle.classList.remove("btn-outline-warning");
-    localStorage.setItem("portfolio-theme", "dark");
+// Typing effect
+const typingElement = document.querySelector(".typing");
+const phrases = [
+  "Building scalable APIs.",
+  "Crafting clean UI experiences.",
+  "Deploying reliable web platforms.",
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let typingForward = true;
+
+function typeLoop() {
+  const currentPhrase = phrases[phraseIndex];
+
+  if (typingForward) {
+    charIndex++;
+    if (charIndex === currentPhrase.length) {
+      typingForward = false;
+      setTimeout(typeLoop, 1200);
+      typingElement.textContent = currentPhrase;
+      return;
+    }
   } else {
-    body.classList.remove("dark-theme");
-    navbar.classList.add("navbar-light");
-    navbar.classList.remove("navbar-dark");
-    toggle.classList.remove("btn-warning");
-    toggle.classList.add("btn-outline-warning");
-    localStorage.setItem("portfolio-theme", "light");
+    charIndex--;
+    if (charIndex === 0) {
+      typingForward = true;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
   }
-};
 
-if (saved === "dark") {
-  applyTheme(true);
-} else {
-  applyTheme(false);
+  typingElement.textContent = currentPhrase.substring(0, charIndex);
+  setTimeout(typeLoop, typingForward ? 80 : 40);
 }
 
-let isDark = body.classList.contains("dark-theme");
+if (typingElement) {
+  typeLoop();
+}
 
-toggle.addEventListener("click", () => {
-  isDark = !isDark;
-  applyTheme(isDark);
-});
+// Theme toggle
+const themeToggle = document.getElementById("themeToggle");
+const body = document.body;
+const navbar = document.getElementById("navbar");
+const savedTheme = localStorage.getItem("portfolio-theme");
 
-const setActiveLink = () => {
-  let currentId = "home";
-  const offset = 120;
-
-  sections.forEach((section) => {
-    const top = section.offsetTop - offset;
-    if (window.scrollY >= top) {
-      currentId = section.id;
-    }
-  });
-
-  navLinks.forEach((link) => {
-    const href = link.getAttribute("href");
-    const isActive = href === `#${currentId}`;
-    link.classList.toggle("active-link", isActive);
-  });
+const setTheme = (theme) => {
+  body.classList.toggle("theme-light", theme === "light");
+  body.classList.toggle("theme-dark", theme === "dark");
+  navbar.classList.toggle("navbar-light", theme === "light");
+  navbar.classList.toggle("navbar-dark", theme === "dark");
+  localStorage.setItem("portfolio-theme", theme);
 };
 
-const setFloatingNav = () => {
-  const isFloating = window.scrollY > 8;
-  navbar.classList.toggle("is-floating", isFloating);
-  if (isFloating) {
-    document.body.style.paddingTop = `${navbar.offsetHeight}px`;
-  } else {
-    document.body.style.paddingTop = "0px";
-  }
-};
+if (savedTheme) {
+  setTheme(savedTheme);
+} else {
+  setTheme("dark");
+}
 
-window.addEventListener("scroll", () => {
-  setActiveLink();
-  setFloatingNav();
-});
-
-window.addEventListener("load", () => {
-  setActiveLink();
-  setFloatingNav();
+themeToggle.addEventListener("click", () => {
+  const nextTheme = body.classList.contains("theme-dark") ? "light" : "dark";
+  setTheme(nextTheme);
 });
